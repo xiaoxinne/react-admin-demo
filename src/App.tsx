@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './component/login/login'
-import './App.scss';
+import './App.less';
 
 const App: React.FC = () => {
   return (
