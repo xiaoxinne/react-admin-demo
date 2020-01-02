@@ -1,11 +1,12 @@
 import React from 'react';
-import Login from './component/login/login'
-import './App.less';
+import {renderRoutes} from 'react-router-config'
+import Routes from './router'
+import './App.less'
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Login />
+      {renderRoutes(Routes)}
     </div>
   );
 }
