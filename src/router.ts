@@ -1,24 +1,24 @@
 import Login from './page/login/login'
-import Home from './page/home/home'
-import Chart from './page/chart/chart'
-import Base from './page/base/base'
-import Card from './page/card/card'
+import Home from './page/home'
+import Chart from './page/home/chart/chart'
+import Base from './page/home/base/base'
+import Card from './page/home/page1/page1'
 
 const Routes = [
     {
-        path: '/',
+        path: '/home/',
         component: Home,
         routes: [
             {
-              path: "/chart",
+              path: "/home/chart",
               component: Chart
             },
             {
-                path: "/base",
+                path: "/home/base",
                 component: Base
             },
             {
-                path: "/card",
+                path: "/home/card",
                 component: Card
             }
         ]

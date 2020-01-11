@@ -4,7 +4,7 @@ const pie = {
         left: "center",
         top: "bottom",
         textStyle: {
-            color: '#389af4',
+            color: '#009688',
             textAlign: 'center',
             fontSize: 14
         },
@@ -14,14 +14,14 @@ const pie = {
     },
     series: [
         {
-            name: '装备制造',
+            name: ' ',
             type: 'pie',
             radius: [105, 110],
             hoverAnimation: false,
             data: [{
                 value: 25,
                 itemStyle: {
-                    color: '#389af4',
+                    color: '#009688',
                 },
                 label: {
                     normal: {
@@ -33,7 +33,7 @@ const pie = {
                         textStyle: {
                             fontSize: '40',
                             fontWeight: 'bold',
-                            color: '#fff'
+                            color: '#009688'
                         }
                     }
                 },
@@ -44,10 +44,10 @@ const pie = {
                 value: 100-25,
                 itemStyle: {
                     normal: {
-                        color: '#dfeaff'
+                        color: '#666'
                     },
                     emphasis: {
-                        color: '#dfeaff'
+                        color: '#666'
                     }
                 }
             }]
@@ -79,7 +79,7 @@ const bar = {
         {
             type : 'category',
             data : ['自用'],
-            nameTextStyle:{color:'#fff',fontSize:'18px'},
+            nameTextStyle:{color:'#666',fontSize:'18px'},
            	axisLabel: {
                 show:false,
             },
@@ -95,7 +95,7 @@ const bar = {
             left: 50,
             top: 'middle',
             style: {
-                fill: '#fff',
+                fill: '#666',
                 text: '自用：17',
                 font: 'bold 14px Microsoft YaHei'
             }
@@ -109,7 +109,7 @@ const bar = {
             silent:true,
             itemStyle: {
                 normal: {
-                    color: '#fff',
+                    color: '#666',
                     barBorderRadius: 10
                 },
             },
@@ -122,7 +122,7 @@ const bar = {
             type:'bar',
             barWidth:10,
             label: {normal: {show: false,position: 'right',formatter: '{c}%'}},
-            data:[{value:17,itemStyle:{normal:{color:'#f80'}}}],
+            data:[{value:17,itemStyle:{normal:{color:'#FF5722'}}}],
             itemStyle: {
                 barBorderRadius: 10
             },
@@ -145,17 +145,16 @@ const line = {
     },
     xAxis:  {
         type: 'category',
-        boundaryGap: false,
-        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45'],
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
         axisLabel: {
-            color: '#fff'
+            color: '#666'
         }
     },
     yAxis: {
         type: 'value',
         axisLabel: {
             formatter: '{value} W',
-            color: '#fff'
+            color: '#666'
         },
         axisPointer: {
             snap: true
@@ -189,25 +188,80 @@ const line = {
             name:'用电量',
             type:'line',
             smooth: true,
-            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
-            markArea: {
-                data: [ [{
-                    name: '早高峰',
-                    xAxis: '07:30'
-                }, {
-                    xAxis: '10:00'
-                }], [{
-                    name: '晚高峰',
-                    xAxis: '17:30'
-                }, {
-                    xAxis: '21:15'
-                }] ]
+            data: [300, 280, 250, 260, 270, 300, 550],
+            itemStyle: {
+                color: function() {
+                    return '#FF5722'
+                }
+            },
+            lineStyle: {
+                color: '#FF5722'
+            }
+        },
+        {
+            name: '平均用电量',
+            type: 'bar',
+            data: [300, 280, 250, 260, 270, 300, 550],
+            itemStyle: {
+                color: function() {
+                    return '#009688'
+                },
             }
         }
     ]
 };
+
+let pictorialBarcolor = ['#ffc64d', '#6bbe29', '#fbc349', '#cb3434']
+const pictorialBar = {
+    tooltip:{
+		show:false
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: ['模块1', '模块2', '模块3', '模块4'],
+            axisTick: {show: false},
+	        axisLine: {show:false},
+            splitLine: {show: false},
+            axisLabel: {
+                color: '#666'
+            }
+        }
+    ],
+    yAxis: [{
+        axisTick: {show: false},
+        axisLine: {show:false},
+        axisLabel: {show:false},
+        splitLine: {show: false}
+    }],
+    series: [
+        {
+            type: 'bar',
+            data: [500, 500, 500, 500],
+            z: -10,
+            itemStyle: {
+                color: '#1f313c'
+            }
+        },
+        {
+            type: 'pictorialBar',
+            data: [123, 345, 231, 123],
+            symbol: 'fixed',
+            symbolSize: [45, 18],
+            symbolMargin: 5,
+            symbolRepeat: 'repeat',
+            symbolBoundingData: 300,
+            itemStyle: {
+                color: function(value: any) {
+                    return pictorialBarcolor[value.dataIndex]
+                }
+            }
+        }
+    ]
+}
 export {
     pie,
     bar,
-    line
+    line,
+    pictorialBar
 }

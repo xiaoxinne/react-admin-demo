@@ -3,12 +3,15 @@ import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/pie'
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/chart/line'
+import 'echarts/lib/chart/pictorialBar'
 
 // 引入提示框和标题组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import 'echarts/lib/component/graphic';
 import 'echarts/lib/component/timeline';
+import 'echarts/lib/component/axis';
+import 'echarts/lib/component/markArea';
 
 import './echarts.less'
 
